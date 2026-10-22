@@ -1,0 +1,40 @@
+# PNL Trading Dashboard PLUS — Paket PWA untuk Android
+
+Paket ini menyiapkan dashboard HTML menjadi Progressive Web App (PWA), sehingga bisa dipasang dari Chrome Android setelah dipublikasikan melalui alamat HTTPS.
+
+## Berkas
+- `index.html` — dashboard
+- `manifest.webmanifest` — nama, ikon, dan pengaturan pemasangan
+- `sw.js` — cache dasar untuk membantu membuka aplikasi kembali
+- `icons/` — ikon aplikasi 192px dan 512px
+
+## Langkah dari HP Android saja
+
+### 1. Unggah paket ke GitHub
+1. Buka https://github.com/ di Chrome Android dan masuk/buat akun.
+2. Buat repository baru, misalnya `pnl-trading-dashboard`, set **Public**.
+3. Pilih **Add file → Upload files**.
+4. Unggah `index.html`, `manifest.webmanifest`, `sw.js`, serta folder `icons` beserta kedua file PNG di dalamnya. Jika antarmuka ponsel tidak bisa mengunggah folder, unggah file PNG satu per satu ke folder `icons` dengan membuat folder melalui jalur `icons/icon-192.png` dan `icons/icon-512.png` jika didukung.
+5. Tekan **Commit changes**.
+
+### 2. Aktifkan GitHub Pages
+1. Di repository, buka **Settings → Pages**.
+2. Pada **Build and deployment**, pilih **Deploy from a branch**.
+3. Pilih branch `main`, folder `/(root)`, lalu **Save**.
+4. Tunggu hingga alamat situs muncul, biasanya berbentuk `https://USERNAME.github.io/pnl-trading-dashboard/`.
+5. Buka alamat tersebut di Chrome Android. Pastikan dashboard tampil dan bukan halaman 404.
+
+### 3. Buat paket Android lewat PWABuilder
+1. Buka https://www.pwabuilder.com/ di Chrome.
+2. Masukkan alamat HTTPS GitHub Pages yang sudah aktif.
+3. Jalankan pemeriksaan PWA. Pastikan manifest dan ikon terdeteksi.
+4. Pilih paket **Android** dan ikuti alur yang ditampilkan situs. Opsi/format paket dapat berubah; ikuti instruksi terbaru dari PWABuilder.
+5. Jika mendapat paket Android yang dapat diinstal, unduh dan buka berkasnya di HP. Android mungkin meminta izin **Install unknown apps** untuk browser/File Manager yang digunakan. Aktifkan hanya untuk sumber yang kamu percaya, lalu instal.
+6. Simpan paket hasil build dan salinan cadangan di tempat aman.
+
+## Penting
+- Ini paket PWA yang disiapkan untuk proses pengemasan; file APK/AAB belum dibuat oleh paket ZIP ini. Proses PWABuilder atau build Android tetap harus diselesaikan.
+- Data transaksi pada dashboard memakai penyimpanan lokal browser (`localStorage`). Saat membuka versi web dan versi APK, data mungkin tidak sama karena konteks penyimpanannya berbeda. Jangan mengandalkan aplikasi sebagai satu-satunya cadangan; ekspor CSV secara berkala.
+- Jangan memasukkan API key, kata sandi exchange, atau data akun sensitif ke dalam dashboard.
+- GitHub Pages membuat situs publik. Dashboard tidak mengunggah data transaksi ke GitHub; yang dipublikasikan hanya berkas aplikasi, tetapi siapa pun dapat mengakses halaman aplikasi.
+- PWA ini memakai cache dasar; perubahan pada berkas mungkin perlu beberapa saat untuk muncul setelah versi diperbarui.
